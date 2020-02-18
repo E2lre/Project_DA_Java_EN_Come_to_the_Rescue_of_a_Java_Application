@@ -1,63 +1,48 @@
 package com.hemebiotech.analytics;
 
-//import java.io.BufferedReader;
+
 import java.io.FileWriter;
 import java.io.IOException;
-//import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 import java.util.Set;
 
-
+/**
+ * Use to write the sorted list in the output file
+ *
+ */
 public class WriteSymptomDataToFile  {
 	
 	private String filepath;
-	//Map<String,Integer> table = new HashMap<String,Integer>();
+	
 	
 	/**
+	 * Class constructor
 	 * 
-	 * @param filepath a full or partial path to file with symptom strings in it, one per line
+	 * @param filepath a full or partial path to file with treatment result, one symptom and the number of occurency per line
 	 */
 	public WriteSymptomDataToFile (String filepath) {
 		this.filepath = filepath;
 	}
 	
-
+	/**
+	 * Write File Method : write in the output file the sort list
+	 * 
+	 * @param mapTree : a sorted maps with symptoms
+	 * @return : boolean value. true if the output file is corrected generated, false if error
+	 */
 	public boolean WriteSymptoms(TreeMap<String,Integer> mapTree) {
 		try {
-			System.out.println (mapTree);// a retirer COMPRENDRE PB CL2 NON TROUVEE DANS TREE ?????
+			
 			FileWriter writer = new FileWriter(filepath);
-			Set<Entry<String, Integer>> entires = mapTree.entrySet();
+			Set<Entry<String, Integer>> entires = mapTree.entrySet();  //mapTree.get(index) is not running. a Set class is used
+			
 			for(Entry<String,Integer> ent:entires){
-	            writer.write (ent.getKey() +";"+ ent.getValue() + "\n");
-				System.out.println(ent.getKey() +";"+ ent.getValue()); // a retirer
+	            writer.write (ent.getKey() +"="+ ent.getValue() + "\n");
 	        }
-			//String j="";
-			/*for	(String i :mapTree.keySet()) {
-				String j = mapTree.keySet().toArray()[0];
-				writer.write (i +";"+ mapTree.get(i.toString()) + "\n");
-				System.out.println(i +";"+ mapTree.get(i)); // a retirer
-				mapTree.en
-				if (mapTree.containsKey(i.toString())) {
-					System.out.println("contient");
-				}
-				else {
-					System.out.println("ne contient pas"); 
-				}
-				if (mapTree.containsKey("fever")) {
-					System.out.println("contient fever");
-				}
-				else {
-					System.out.println("ne contient pas fever"); 
-				}
-				
-			}
-			System.out.println (mapTree);// a retirer
-			*/
+
 			writer.close();
+			System.out.println("number of line wrote in the output file : "+ mapTree.size());
 			return true;
 		} 
 		catch (IOException e) {

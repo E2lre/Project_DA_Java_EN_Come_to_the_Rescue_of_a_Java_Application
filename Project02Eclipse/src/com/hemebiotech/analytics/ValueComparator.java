@@ -1,16 +1,14 @@
 package com.hemebiotech.analytics;
 
-//import java.io.BufferedReader;
-//import java.io.IOException;
-//import java.util.ArrayList;
-//import java.util.List;
+
 import java.util.Map;
-//import java.util.HashMap;
-//import java.util.TreeMap;
 import java.util.Comparator;
 
-//https://www.journaldunet.fr/web-tech/developpement/1202393-comment-trier-une-map-par-valeurs-en-java/
 
+/**
+ * Use sort the list of symptom
+ *
+ */
 
 public class ValueComparator implements Comparator<String> {
 	

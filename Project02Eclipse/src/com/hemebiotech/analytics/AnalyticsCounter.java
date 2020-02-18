@@ -1,24 +1,27 @@
 package com.hemebiotech.analytics;
 
-//import java.io.BufferedReader;
-//import java.io.FileReader;
-//import java.io.FileWriter;
+
+//import java.io.IOError;
+//import java.io.IOException;
 import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
 
+/**
+ * Main class
+ *
+ */
 public class AnalyticsCounter {
-	// ancienne donnée d'Alex à suprimer
-	// private static int headCount = 0; // initialize to 0
-	// private static int rashCount = 0; // initialize to 0
-	// private static int pupilCount = 0; // initialize to 0
-
 	/**
-	 * Main method : gest date from file, sort te datas (alphabetic), write result on output file
-	 * @param filepath a full or partial path to file with symptom strings in it, one per line
+	 * Main method : get data from input file (one line per symptom), count and sort the datas (alphabetic). write result on output file : 
+	 *<p> 		* Read datas in input file with ReadSymptomDataFromFile class</p>
+	 *<p>		* Put the datas in symptomsList ArrayList</p>
+	 *<p> 		* Count and sort datas with SortCountData class</p>
+	 *<p> 		* write datas in output file with WriteSymptomDataToFile class</p>
+	 *<p>		This program logs in the console to help the run team (for a best Quality Of Service) </p>
+	 * @param args - optional: filepath, input file name, output file name
+	 * @throws PersonalExceptions if input file doesn't exist or empty
 	 */
-	public static void main(String args[]) {
+	public static void main(String args[]) throws Exception {
+		
 		// Working directory for files
 		String workDirectory = "C:\\Devenv\\git\\P2\\";
 		// Name of files
@@ -26,64 +29,69 @@ public class AnalyticsCounter {
 		String outputFile = "result.out"; //result file
 		boolean result = false;
 		
-		// Symptoms list
-		ArrayList<String> symptomsList = new ArrayList<String>();
-		// Synthetic Symptom
-		//Map<String,Integer> syntheticSymptom = new HashMap<String,Integer>();
-		
-		ReadSymptomDataFromFile getData = new ReadSymptomDataFromFile(workDirectory+inputFile);
-		//getData.GetSymptoms();
-		symptomsList.addAll(getData.GetSymptoms());
-		
-		SortCountData countData = new SortCountData(symptomsList);
-		//countData.SetSymptoms();
-		
-		WriteSymptomDataToFile syntheticOutput = new WriteSymptomDataToFile(workDirectory+outputFile);
-		result = syntheticOutput.WriteSymptoms(countData.SetSymptoms());
-	
-		if (result) {
-			System.out.println("File " + inputFile + " treated correctly");
-		}
-		else {
-			System.out.println("File " + inputFile + " treated with errors");
-		}
+		try
+		{
+			System.out.println("Start Programm");
 			
+			//get args if send
+			if (args.length > 0) {
+				if (args.length>0) {
+					workDirectory = args[0].toString();
+					System.out.println("work directory in argument "+workDirectory);
+				}
+				if (args.length>1) {
+					inputFile = args[1].toString();
+					System.out.println("input file in argument "+inputFile);
+				}
+				if (args.length>2) {
+					outputFile = args[2].toString();
+					System.out.println("output file in argument "+outputFile);
+				}
+			}
 			
+			// Symptoms list
+			ArrayList<String> symptomsList = new ArrayList<String>();
+			
+			//get all the symptom in the input file
+			ReadSymptomDataFromFile getData = new ReadSymptomDataFromFile(workDirectory+inputFile);
+						
+			symptomsList.addAll(getData.GetSymptoms());
+			
+			//catch exeception if input file in empty or don't exist
+			if (symptomsList.isEmpty()) { 
+				throw new PersonalExceptions("Error on input file");
+			}
+			System.out.println("number of line read in input file "+inputFile+ " : "+ symptomsList.size());
+			
+			//prepare the sort symptom list
+			SortCountData countData = new SortCountData(symptomsList);
+			
+			// initialize output file
+			WriteSymptomDataToFile syntheticOutput = new WriteSymptomDataToFile(workDirectory+outputFile);
+			
+			//count, sort symptom and write in the output file
+			result = syntheticOutput.WriteSymptoms(countData.SetSymptoms());
+		
+			if (result) {
+				System.out.println("File " + inputFile + " treated correctly");
+			}
+			else {
+				System.out.println("File " + inputFile + " treated with errors");
+				throw new PersonalExceptions("File " + inputFile + " treated with errors");
+			}
+			
+		}catch (PersonalExceptions e) {
+			e.printStackTrace();
+			System.out.println("Personnal Error : " + e.getMessage());
+		}
+		
+		catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Error : " + e.getMessage());
+		}
 		
 		
 
 	}
-	///**
-	// * main_old : old method from Elex, must be supress before release******************************
-	// * @param filepath a full or partial path to file with symptom strings in it, one per line
-	// */
-	//public static void main_old(String args[]) throws Exception {
-	//	// first get input
-	//BufferedReader reader = new BufferedReader(new FileReader(
-	//		"C:\\Devenv\\git\\P2\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt"));
-	//String line = reader.readLine();
-	////
-	//int i = 0; // set i to 0
-	//while (line != null) {
-	//	i++; // increment i
-	//	System.out.println("symptom from file: " + line);
-	//	if (line.equals("headache")) {
-	//		headCount++;
-	//		System.out.println("number of headaches: " + headCount);
-	//	} else if (line.equals("rush")) {
-	//		rashCount++;
-	//////	} else if (line.contains("pupils")) {
-	//			pupilCount++;
-	//		}
-	//
-	//	line = reader.readLine(); // get another symptom
-	//}
-	//
-	//// next generate output
-	//FileWriter writer = new FileWriter("result.out");
-	//////writer.write("headache: " + headCount + "\n");
-	//	writer.write("rash: " + rashCount + "\n");
-	//	writer.write("dialated pupils: " + pupilCount + "\n");
-	//	writer.close();
-	//}
+
 }

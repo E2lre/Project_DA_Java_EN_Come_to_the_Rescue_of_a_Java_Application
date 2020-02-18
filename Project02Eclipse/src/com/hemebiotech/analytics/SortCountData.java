@@ -3,21 +3,33 @@ package com.hemebiotech.analytics;
 //import java.io.BufferedReader;
 //import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
 
-
+/**
+ * Use to count all symptoms in a sorted list
+ *
+ */
 
 public class SortCountData implements ISymptomWriter {
 	
 	private ArrayList<String> myList = new ArrayList<String>();
-	
-	public SortCountData (List myList) {
-		this.myList.addAll(myList);
+		
+	/**
+	 * Class constructor 
+	 * 
+	 * @param SetSymptoms : List of symptom
+	 */
+	public SortCountData (ArrayList<String> SetSymptoms) {
+			myList.addAll(SetSymptoms);
 	}
 	
+	/**
+	 * count all the symptoms and return an alphabetic sort map with all the symptoms
+	 * 
+	 * @return sorted list of symptom
+	 */
 	@Override
 	public TreeMap<String,Integer> SetSymptoms() {
 		
@@ -26,9 +38,7 @@ public class SortCountData implements ISymptomWriter {
 		ValueComparator comparateur = new ValueComparator(table);//
 		TreeMap<String,Integer> mapTriee = new TreeMap<String,Integer>(comparateur);//
 		
-		int count = 0;
-		//String test="";
-		
+		int count = 0;		
 		
 		for	(int i = 0; i < myList.size(); i++) {
 				
@@ -39,45 +49,13 @@ public class SortCountData implements ISymptomWriter {
 			else {
 				table.put(myList.get(i), 1);
 			}
-			//test= myList.get(i);
-			//count = table.get(myList.get());
+
 		}
 
 		mapTriee.putAll(table);
 		
 		return mapTriee;
 	}
-	/*public Map<String,Integer> SetSymptoms() {
-		
-		Map<String,Integer> table = new HashMap<String,Integer>();
-		
-		ValueComparator comparateur = new ValueComparator(table);//
-		TreeMap<String,Integer> mapTriee = new TreeMap<String,Integer>(comparateur);//
-		
-		int count = 0;
-		String test="";
-		
-		
-		for	(int i = 0; i < myList.size(); i++) {
-				
-			if (table.containsKey(myList.get(i))) {
-				count = table.get(myList.get(i));
-				table.put(myList.get(i),count+1);
-			}
-			else {
-				table.put(myList.get(i), 1);
-			}
-			test= myList.get(i);
-			//count = table.get(myList.get());
-		}
-
-		mapTriee.putAll(table);
-		table.clear();
-		table.putAll(mapTriee);
-		
-		return table;
-	}
-	*/
 	
 
 }
