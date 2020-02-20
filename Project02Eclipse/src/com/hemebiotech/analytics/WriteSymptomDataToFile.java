@@ -33,17 +33,23 @@ public class WriteSymptomDataToFile  {
 	 */
 	public boolean WriteSymptoms(TreeMap<String,Integer> mapTree) {
 		try {
-			
-			FileWriter writer = new FileWriter(filepath);
-			Set<Entry<String, Integer>> entires = mapTree.entrySet();  //mapTree.get(index) is not running. a Set class is used
-			
-			for(Entry<String,Integer> ent:entires){
-	            writer.write (ent.getKey() +"="+ ent.getValue() + "\n");
-	        }
-
-			writer.close();
-			System.out.println("number of line wrote in the output file : "+ mapTree.size());
-			return true;
+			if (!mapTree.isEmpty())
+			{	
+				FileWriter writer = new FileWriter(filepath);
+				Set<Entry<String, Integer>> entires = mapTree.entrySet();  //mapTree.get(index) is not running. a Set class is used
+				
+				for(Entry<String,Integer> ent:entires){
+		            writer.write (ent.getKey() +"="+ ent.getValue() + "\n");
+		        }
+	
+				writer.close();
+				System.out.println("number of line wrote in the output file " + this.filepath + " : "+ mapTree.size());
+				return true;
+			}
+			else {
+				System.out.println("No datas to write on ouput file " + this.filepath);
+				return false;
+			}
 		} 
 		catch (IOException e) {
 		e.printStackTrace();

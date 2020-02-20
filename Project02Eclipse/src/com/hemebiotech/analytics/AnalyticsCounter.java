@@ -3,13 +3,18 @@ package com.hemebiotech.analytics;
 
 //import java.io.IOError;
 //import java.io.IOException;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 /**
  * Main class
  *
  */
 public class AnalyticsCounter {
+
+
+	
+			
+
 	/**
 	 * Main method : get data from input file (one line per symptom), count and sort the datas (alphabetic). write result on output file : 
 	 *<p> 		* Read datas in input file with ReadSymptomDataFromFile class</p>
@@ -22,19 +27,22 @@ public class AnalyticsCounter {
 	 */
 	public static void main(String args[]) throws Exception {
 		
-		// Working directory for files
-		String workDirectory = "C:\\Devenv\\git\\P2\\";
+	
 		// Name of files
-		String inputFile = "symptoms.txt"; //symptom file
-		String outputFile = "result.out"; //result file
+		//String inputFilePath ; //symptom file path
+		//String outputFilePath; //result file path
+
 		boolean result = false;
-		
+
 		try
 		{
+			//Start message
 			System.out.println("Start Programm");
-			
+		
+			DataFile dataFile = new DataFile(args);
+
 			//get args if send
-			if (args.length > 0) {
+/*			if (args.length > 0) {
 				if (args.length>0) {
 					workDirectory = args[0].toString();
 					System.out.println("work directory in argument "+workDirectory);
@@ -48,50 +56,50 @@ public class AnalyticsCounter {
 					System.out.println("output file in argument "+outputFile);
 				}
 			}
-			
+*/			
 			// Symptoms list
-			ArrayList<String> symptomsList = new ArrayList<String>();
+//			ArrayList<String> symptomsList = new ArrayList<String>();
 			
 			//get all the symptom in the input file
-			ReadSymptomDataFromFile getData = new ReadSymptomDataFromFile(workDirectory+inputFile);
+			ISymptomReader getData = new ReadSymptomDataFromFile(dataFile.inputFilePath);
 						
-			symptomsList.addAll(getData.GetSymptoms());
+//			symptomsList.addAll(getData.GetSymptoms());
 			
 			//catch exeception if input file in empty or don't exist
-			if (symptomsList.isEmpty()) { 
+/*			if (symptomsList.isEmpty()) { 
 				throw new PersonalExceptions("Error on input file");
 			}
+
 			System.out.println("number of line read in input file "+inputFile+ " : "+ symptomsList.size());
-			
+*/			
 			//prepare the sort symptom list
-			SortCountData countData = new SortCountData(symptomsList);
-			
+//			ISymptomWriter countData = new SortCountData(symptomsList);
+			ISymptomWriter countData = new SortCountData(getData.GetSymptoms());
+					
 			// initialize output file
-			WriteSymptomDataToFile syntheticOutput = new WriteSymptomDataToFile(workDirectory+outputFile);
+			WriteSymptomDataToFile syntheticOutput = new WriteSymptomDataToFile(dataFile.outputFilePath);
 			
 			//count, sort symptom and write in the output file
 			result = syntheticOutput.WriteSymptoms(countData.SetSymptoms());
 		
+			//End message
 			if (result) {
-				System.out.println("File " + inputFile + " treated correctly");
+				System.out.println("File " + dataFile.inputFilePath + " treated correctly");
 			}
 			else {
-				System.out.println("File " + inputFile + " treated with errors");
-				throw new PersonalExceptions("File " + inputFile + " treated with errors");
+//				throw new PersonalExceptions("File " + inputFile + " treated with errors");
+				System.out.println("File " + dataFile.inputFilePath + " treated with errors");
 			}
 			
-		}catch (PersonalExceptions e) {
-			e.printStackTrace();
-			System.out.println("Personnal Error : " + e.getMessage());
 		}
+//		catch (PersonalExceptions e) {
+//			e.printStackTrace();
+//		}
 		
 		catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Error : " + e.getMessage());
 		}
-		
-		
-
 	}
-
+	
 }

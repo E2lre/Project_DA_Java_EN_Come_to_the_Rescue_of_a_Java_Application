@@ -3,6 +3,7 @@ package com.hemebiotech.analytics;
 //import java.io.BufferedReader;
 //import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
@@ -21,8 +22,8 @@ public class SortCountData implements ISymptomWriter {
 	 * 
 	 * @param SetSymptoms : List of symptom
 	 */
-	public SortCountData (ArrayList<String> SetSymptoms) {
-			myList.addAll(SetSymptoms);
+	public SortCountData (List<String> setSymptoms) {
+			myList.addAll(setSymptoms);
 	}
 	
 	/**
