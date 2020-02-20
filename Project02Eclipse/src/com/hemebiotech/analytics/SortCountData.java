@@ -20,7 +20,7 @@ public class SortCountData implements ISymptomWriter {
 	/**
 	 * Class constructor 
 	 * 
-	 * @param SetSymptoms : List of symptom
+	 * @param setSymptoms : List of symptom
 	 */
 	public SortCountData (List<String> setSymptoms) {
 			myList.addAll(setSymptoms);
@@ -36,8 +36,8 @@ public class SortCountData implements ISymptomWriter {
 		
 		Map<String,Integer> table = new HashMap<String,Integer>();
 		
-		ValueComparator comparateur = new ValueComparator(table);//
-		TreeMap<String,Integer> mapTriee = new TreeMap<String,Integer>(comparateur);//
+		ValueComparator comparator = new ValueComparator(table);//
+		TreeMap<String,Integer> mapTriee = new TreeMap<String,Integer>(comparator);//
 		
 		int count = 0;		
 		

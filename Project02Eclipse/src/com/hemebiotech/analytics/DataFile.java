@@ -1,11 +1,24 @@
 package com.hemebiotech.analytics;
 
+/**
+ * Use to prepare the inputfile path and outputfile path
+ *
+ */
 public class DataFile{
+
 	public String inputFilePath;
 	public String outputFilePath;
+	
+	
+	/**
+	 * Data file Method : prepare the inputfile path and outputfile path from param
+	 *
+	 * @param param - filepath, input file name, output file name
+	 */
 	public DataFile(String[] param) {
 		// Working directory for files
-		String workDirectory = "C:\\Devenv\\git\\P2\\";
+		//String workDirectory = "C:\\Devenv\\git\\P2\\";
+		String workDirectory = "C:\\Devenv\\git\\P2\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\";
 		// Name of files
 		String inputFile = "symptoms.txt"; //symptom file
 		String outputFile = "result.out"; //result file
