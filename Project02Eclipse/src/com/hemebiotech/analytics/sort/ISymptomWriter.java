@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.analytics.sort;
 
 
 import java.util.TreeMap;
@@ -14,5 +14,5 @@ public interface ISymptomWriter {
 	 * 
 	 * @return a sort list
 	 */
-	TreeMap<String,Integer> SetSymptoms ();
+	TreeMap<String,Integer> setSymptoms ();
 }

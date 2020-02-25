@@ -1,6 +1,11 @@
 package com.hemebiotech.analytics;
 
 
+import com.hemebiotech.analytics.io.ISymptomReader;
+import com.hemebiotech.analytics.io.ReadSymptomDataFromFile;
+import com.hemebiotech.analytics.io.WriteSymptomDataToFile;
+import com.hemebiotech.analytics.sort.ISymptomWriter;
+import com.hemebiotech.analytics.sort.SortCountData;
 
 /**
  * Main class
@@ -40,13 +45,13 @@ public class AnalyticsCounter {
 			ISymptomReader getData = new ReadSymptomDataFromFile(dataFile.inputFilePath);
 						
 			//prepare the sort symptom list
-			ISymptomWriter countData = new SortCountData(getData.GetSymptoms());
+			ISymptomWriter countData = new SortCountData(getData.getSymptoms());
 					
 			// initialize output file
 			WriteSymptomDataToFile syntheticOutput = new WriteSymptomDataToFile(dataFile.outputFilePath);
 			
 			//count, sort symptom and write in the output file
-			result = syntheticOutput.WriteSymptoms(countData.SetSymptoms());
+			result = syntheticOutput.writeSymptoms(countData.setSymptoms());
 		
 			//End message
 			if (result) {

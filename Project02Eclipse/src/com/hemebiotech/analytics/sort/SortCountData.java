@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.analytics.sort;
 
 //import java.io.BufferedReader;
 //import java.io.IOException;
@@ -32,7 +32,7 @@ public class SortCountData implements ISymptomWriter {
 	 * @return sorted list of symptom
 	 */
 	@Override
-	public TreeMap<String,Integer> SetSymptoms() {
+	public TreeMap<String,Integer> setSymptoms() {
 		
 		Map<String,Integer> table = new HashMap<String,Integer>();
 		

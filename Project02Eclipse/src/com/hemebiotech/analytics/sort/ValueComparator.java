@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.analytics.sort;
 
 
 import java.util.Map;
@@ -19,6 +19,7 @@ public class ValueComparator implements Comparator<String> {
 	}
 
 	
+	@Override
 	public int compare(String a, String b) {
 		if (a.compareTo(b) >= 0) {
 			return 1;
@@ -27,12 +28,12 @@ public class ValueComparator implements Comparator<String> {
 			return -1;
 		}
 	}
-	public int compare2(String a, String b) {
+	/*public int compare2(String a, String b) { //ne plus utiliser à supprimer
 		if (base.get(a) >= base.get(b)) {
 			return -1;
 		} 
 		else {
 			return 1;
 		}
-	}
+	}*/
 }
