@@ -7,6 +7,13 @@ import com.hemebiotech.analytics.io.WriteSymptomDataToFile;
 import com.hemebiotech.analytics.sort.ISymptomCountData;
 import com.hemebiotech.analytics.sort.SortCountData;
 
+import java.util.List;
+
+import com.hemebiotech.analytics.inputdata.ISymptomGenericReader;
+import com.hemebiotech.analytics.inputdata.ReadSymptomData; 
+import com.hemebiotech.analytics.inputdata.*;
+
+
 /**
  * Main class
  *
@@ -42,11 +49,26 @@ public class AnalyticsCounter {
 
 			
 			//get all the symptom in the input file
-			ISymptomReader getData = new ReadSymptomDataFromFile(dataFile.inputFilePath);
-						
-			//prepare the sort symptom list
-			ISymptomCountData countData = new SortCountData(getData.getSymptoms());
+			// Old Version : ISymptomReader getData = new ReadSymptomDataFromFile(dataFile.inputFilePath);
+			ReadSymptomData getData = new ReadSymptomData() //TODO E2lre comprendre cet Override
+			{ 
+				
+				@Override
+				public List<String> getSymptoms() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+			};
+			ReaderFile readerFile = null;
+			readerFile = getData.getReadFile(dataFile.inputFilePath);
+			
+			
+			
 					
+			//prepare the sort symptom list
+			// OLD ISymptomCountData countData = new SortCountData(getData.getSymptoms()); //TODO E2lre a retier
+			ISymptomCountData countData = new SortCountData(readerFile.getSymptoms());
+			
 			// initialize output file
 			WriteSymptomDataToFile syntheticOutput = new WriteSymptomDataToFile(dataFile.outputFilePath);
 			
