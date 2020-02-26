@@ -44,7 +44,7 @@ public class WriteSymptomDataToFile  {
 		        }
 	
 				writer.close();
-				System.out.println("number of line wrote in the output file " + this.filepath + " : "+ mapTree.size());
+				System.out.println(mapTree.size() + " lines wrote in the output file " + this.filepath);
 				return true;
 			}
 			else {

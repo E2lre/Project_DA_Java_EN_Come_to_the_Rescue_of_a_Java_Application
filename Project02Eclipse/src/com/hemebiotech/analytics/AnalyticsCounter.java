@@ -59,6 +59,7 @@ public class AnalyticsCounter {
 					return null;
 				}
 			};
+			
 			ReaderFile readerFile = null;
 			readerFile = getData.getReadFile(dataFile.inputFilePath);
 			
@@ -87,7 +88,6 @@ public class AnalyticsCounter {
 		
 		catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Error : " + e.getMessage());
 		}
 	}
 	
