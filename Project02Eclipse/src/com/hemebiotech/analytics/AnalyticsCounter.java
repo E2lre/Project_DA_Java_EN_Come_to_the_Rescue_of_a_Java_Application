@@ -4,7 +4,7 @@ package com.hemebiotech.analytics;
 import com.hemebiotech.analytics.io.ISymptomReader;
 import com.hemebiotech.analytics.io.ReadSymptomDataFromFile;
 import com.hemebiotech.analytics.io.WriteSymptomDataToFile;
-import com.hemebiotech.analytics.sort.ISymptomWriter;
+import com.hemebiotech.analytics.sort.ISymptomCountData;
 import com.hemebiotech.analytics.sort.SortCountData;
 
 /**
@@ -45,7 +45,7 @@ public class AnalyticsCounter {
 			ISymptomReader getData = new ReadSymptomDataFromFile(dataFile.inputFilePath);
 						
 			//prepare the sort symptom list
-			ISymptomWriter countData = new SortCountData(getData.getSymptoms());
+			ISymptomCountData countData = new SortCountData(getData.getSymptoms());
 					
 			// initialize output file
 			WriteSymptomDataToFile syntheticOutput = new WriteSymptomDataToFile(dataFile.outputFilePath);

@@ -4,7 +4,7 @@ package com.hemebiotech.analytics.io;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map.Entry;
-import java.util.TreeMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -31,8 +31,9 @@ public class WriteSymptomDataToFile  {
 	 * @param mapTree : a sorted maps with symptoms
 	 * @return : boolean value. true if the output file is corrected generated, false if error
 	 */
-	public boolean writeSymptoms(TreeMap<String,Integer> mapTree) {
-		try {
+
+	public boolean writeSymptoms(Map<String,Integer> mapTree) {
+	try {
 			if (!mapTree.isEmpty())
 			{	
 				FileWriter writer = new FileWriter(filepath);

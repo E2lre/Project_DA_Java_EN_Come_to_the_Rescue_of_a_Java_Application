@@ -1,7 +1,5 @@
 package com.hemebiotech.analytics.sort;
 
-//import java.io.BufferedReader;
-//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +11,7 @@ import java.util.TreeMap;
  *
  */
 
-public class SortCountData implements ISymptomWriter {
+public class SortCountData implements ISymptomCountData {
 	
 	private ArrayList<String> myList = new ArrayList<String>();
 		
@@ -32,12 +30,12 @@ public class SortCountData implements ISymptomWriter {
 	 * @return sorted list of symptom
 	 */
 	@Override
-	public TreeMap<String,Integer> setSymptoms() {
+	public Map<String,Integer> setSymptoms() {
 		
 		Map<String,Integer> table = new HashMap<String,Integer>();
-		
-		ValueComparator comparator = new ValueComparator(table);//
-		TreeMap<String,Integer> mapTriee = new TreeMap<String,Integer>(comparator);//
+
+		ValueComparator comparator = new ValueComparator();
+		TreeMap<String,Integer> mapSort = new TreeMap<String,Integer>(comparator);
 		
 		int count = 0;		
 		
@@ -53,9 +51,9 @@ public class SortCountData implements ISymptomWriter {
 
 		}
 
-		mapTriee.putAll(table);
+		mapSort.putAll(table);
 		
-		return mapTriee;
+		return mapSort;
 	}
 	
 

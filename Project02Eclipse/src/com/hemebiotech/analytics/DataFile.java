@@ -17,7 +17,6 @@ public class DataFile{
 	 */
 	public DataFile(String[] param) {
 		// Working directory for files
-		//String workDirectory = "C:\\Devenv\\git\\P2\\";
 		String workDirectory = "C:\\Devenv\\git\\P2\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\";
 		// Name of files
 		String inputFile = "symptoms.txt"; //symptom file

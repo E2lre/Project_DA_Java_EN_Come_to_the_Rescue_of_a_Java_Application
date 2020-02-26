@@ -1,18 +1,18 @@
 package com.hemebiotech.analytics.sort;
 
 
-import java.util.TreeMap;
-
+//import java.util.TreeMap; // A supprimer
+import java.util.Map;
 /**
  * all the data in a sorted list
  * 
  * 
  */
-public interface ISymptomWriter {
+public interface ISymptomCountData {
 	/**
 	 * If no data is available, return an empty List
 	 * 
 	 * @return a sort list
 	 */
-	TreeMap<String,Integer> setSymptoms ();
+	Map<String,Integer> setSymptoms ();
 }
