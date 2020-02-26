@@ -12,11 +12,9 @@ import com.hemebiotech.analytics.outputdata.WriteSymptomDataToFile;
 public class AnalyticsCounter {
 
 	/**
-	 * Main method : get data from input file (one line per symptom), count and sort
+	 * Main method : get data from input file (one line per symptom for .txt or all symptoms in 1 line separate by ; in .csv), count and sort
 	 * the datas (alphabetic). write result on output file :
-	 * <p>
-	 * * filepath argugments preparation
-	 * </p>
+	 * <p>	 * filepath argugments preparation </p>
 	 * <p>
 	 * * Read datas in input file with ReadSymptomDataFromFile class
 	 * </p>

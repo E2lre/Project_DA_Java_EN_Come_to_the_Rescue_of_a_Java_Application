@@ -11,7 +11,7 @@ import java.util.TreeMap;
  *
  */
 
-public class SortCountData {//TODO a supprimer implements ISymptomCountData {
+public class SortCountData {
 	
 	private ArrayList<String> myList = new ArrayList<String>();
 		
@@ -25,7 +25,7 @@ public class SortCountData {//TODO a supprimer implements ISymptomCountData {
 	}
 	
 	/**
-	 * count all the symptoms and return an alphabetic sort map with all the symptoms
+	 * Count all the symptoms and return an alphabetic sort map with all the symptoms
 	 * 
 	 * @return sorted list of symptom
 	 */
@@ -41,12 +41,12 @@ public class SortCountData {//TODO a supprimer implements ISymptomCountData {
 		
 		for	(int i = 0; i < myList.size(); i++) {
 				
-			if (table.containsKey(myList.get(i))) {
+			if (table.containsKey(myList.get(i))) { // if symptom is already in the list, the number is incremented
 				count = table.get(myList.get(i));
 				table.put(myList.get(i),count+1);
 			}
 			else {
-				table.put(myList.get(i), 1);
+				table.put(myList.get(i), 1);// if symptom is not already in the list, the number is set to 1
 			}
 
 		}

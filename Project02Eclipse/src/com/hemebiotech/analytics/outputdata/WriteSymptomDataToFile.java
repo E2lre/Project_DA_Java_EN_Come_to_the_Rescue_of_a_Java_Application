@@ -19,7 +19,7 @@ public class WriteSymptomDataToFile  {
 	/**
 	 * Class constructor
 	 * 
-	 * @param filepath a full or partial path to file with treatment result, one symptom and the number of occurency per line
+	 * @param filepath is the filepath of the output file
 	 */
 	public WriteSymptomDataToFile (String filepath) {
 		this.filepath = filepath;
@@ -29,7 +29,7 @@ public class WriteSymptomDataToFile  {
 	 * Write File Method : write in the output file the sort list
 	 * 
 	 * @param mapTree : a sorted maps with symptoms
-	 * @return : boolean value. true if the output file is corrected generated, false if error
+	 * @return boolean value. true if the output file is corrected generated, false if error
 	 */
 
 	public boolean writeSymptoms(Map<String,Integer> mapTree) {

@@ -8,6 +8,10 @@ public class PersonalExceptions extends Exception {
 		super();
 				
 	}
+	/**
+	 * Send a personal exception
+	 * @param message : message of the personal exception
+	 */
 	public PersonalExceptions (String message) {
 		super(message);
 		System.out.println(message);		
