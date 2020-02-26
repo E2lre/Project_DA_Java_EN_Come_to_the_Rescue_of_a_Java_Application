@@ -11,7 +11,7 @@ import java.util.TreeMap;
  *
  */
 
-public class SortCountData implements ISymptomCountData {
+public class SortCountData {//TODO a supprimer implements ISymptomCountData {
 	
 	private ArrayList<String> myList = new ArrayList<String>();
 		
@@ -29,7 +29,7 @@ public class SortCountData implements ISymptomCountData {
 	 * 
 	 * @return sorted list of symptom
 	 */
-	@Override
+	//@Override
 	public Map<String,Integer> setSymptoms() {
 		
 		Map<String,Integer> table = new HashMap<String,Integer>();
