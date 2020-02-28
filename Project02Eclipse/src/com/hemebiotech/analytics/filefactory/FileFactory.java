@@ -17,9 +17,10 @@ import com.hemebiotech.analytics.filefactory.outputdata.FileWriterOut;
 public class FileFactory {
 	private String filepath;
 
+
 	/**
 	 * Read the input file. Analyse file extension on 4 char. ".txt" for a file with
-	 * 1 line per symptom. ".csv" for a file with all symptoms in 1 line separate by
+	 * 1 line per symptom. ".csv" for a file with all symptoms in 1line separate by
 	 * ";"
 	 * 
 	 * @param filepath is the filepath of the inputfile .txt ou .csv
