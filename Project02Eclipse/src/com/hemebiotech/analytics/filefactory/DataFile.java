@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics.inputdata;
+package com.hemebiotech.analytics.filefactory;
 
 /**
  * Use to prepare the inputfile path and outputfile path

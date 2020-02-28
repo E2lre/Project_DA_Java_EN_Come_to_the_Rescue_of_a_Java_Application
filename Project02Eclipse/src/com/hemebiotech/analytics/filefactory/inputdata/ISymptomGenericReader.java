@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics.inputdata;
+package com.hemebiotech.analytics.filefactory.inputdata;
 
 import java.util.List;
 /**

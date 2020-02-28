@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics.inputdata;
+package com.hemebiotech.analytics.filefactory.inputdata;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,7 +9,7 @@ import java.util.List;
 import com.hemebiotech.analytics.exceptions.PersonalExceptions;
 
 /**
- * Mother abstract class
+ * Mother abstract class for read
  * 
  * @author S058601
  *
@@ -18,11 +18,10 @@ public abstract class FileReaderGeneric implements ISymptomGenericReader {
 
 	protected String filepath; // containt the filepath for childclass
 	
-	//TODO E2lre
 	/**
 	 * 
-	 * @param filepath
-	 * @return
+	 * @param filepath is the filepath of the inputfile .txt ou .csv
+	 * @return List of symptoms
 	 */
 	public List<String> getLines(String filepath) {
 

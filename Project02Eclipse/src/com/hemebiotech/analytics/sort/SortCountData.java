@@ -30,7 +30,7 @@ public class SortCountData {
 	 * @return sorted list of symptom
 	 */
 	//@Override
-	public Map<String,Integer> setSymptoms() {
+	public Map<String,Integer> sortSymptoms() {
 		
 		Map<String,Integer> table = new HashMap<String,Integer>();
 
