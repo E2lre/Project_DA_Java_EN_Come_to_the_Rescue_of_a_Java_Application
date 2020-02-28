@@ -1,16 +1,16 @@
-package com.hemebiotech.analytics.inputdata;
+package com.hemebiotech.analytics.filefactory.inputdata;
 
 import java.util.ArrayList;
 import java.util.List;
 /**
- * ReaderFileTxt is the implementationof the mother class of ReaderFile for .txt files.
+ * ReaderFileTxt is the implementation of the mother class of ReaderFile for .txt files.
  * It implements getSymptoms method of the interface ISymptomGenericReader
  * @author S058601
  *
  */
 public class FileReaderTxt extends FileReaderGeneric {
 	/**
-	 * ReaderFileTxt(filepath) in the constructor of ReaderFileTxt class
+	 * ReaderFileTxt(filepath) is the constructor of ReaderFileTxt class to read a .txt file
 	 * @param filepath is the .txt filepath
 	 */
 	public FileReaderTxt(String filepath) {

@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics.inputdata;
+package com.hemebiotech.analytics.filefactory.inputdata;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 public class FileReaderCsv extends FileReaderGeneric {
 
 	/**
-	 * ReaderFileCsv(filepath) in the constructor of ReaderFileCsv class
+	 * ReaderFileCsv(filepath) is the constructor of ReaderFileCsv class to read a .csv file
 	 * @param filepath  is the .csv filepath
 	 */
 	public FileReaderCsv(String filepath) {

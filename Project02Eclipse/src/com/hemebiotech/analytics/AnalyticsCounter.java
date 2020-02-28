@@ -1,9 +1,10 @@
 package com.hemebiotech.analytics;
 
 import com.hemebiotech.analytics.sort.SortCountData;
-
-import com.hemebiotech.analytics.inputdata.*;
-import com.hemebiotech.analytics.outputdata.WriteSymptomDataToFile;
+import com.hemebiotech.analytics.filefactory.DataFile;
+import com.hemebiotech.analytics.filefactory.FileFactory;
+import com.hemebiotech.analytics.filefactory.inputdata.ISymptomGenericReader;
+import com.hemebiotech.analytics.filefactory.outputdata.ISymptomGenericWriter;
 
 /**
  * Main class
@@ -49,18 +50,18 @@ public class AnalyticsCounter {
 
 			// get all symptoms in the input file
 			FileFactory myFileFactory = new FileFactory();
-			ISymptomGenericReader readerFile = myFileFactory.getReadFile("read",dataFile.inputFilePath);
+			ISymptomGenericReader readerFile = myFileFactory.getReader(dataFile.inputFilePath);
 			
 			// prepare the sort symptom list
-
 			SortCountData countData = new SortCountData(readerFile.getSymptoms());
 
 			// initialize output file
-			WriteSymptomDataToFile syntheticOutput = new WriteSymptomDataToFile(dataFile.outputFilePath);
-
+			ISymptomGenericWriter fileWriter = myFileFactory.getWriter(dataFile.outputFilePath);
+			
 			// count, sort symptom and write in the output file
-			result = syntheticOutput.writeSymptoms(countData.setSymptoms());
+			result = fileWriter.setSymptoms(countData.sortSymptoms());
 
+			
 			// End message
 			if (result) {
 				System.out.println("Correct treatment for file " + dataFile.inputFilePath);
