@@ -47,13 +47,10 @@ public class AnalyticsCounter {
 			// filepath argugments preparation
 			DataFile dataFile = new DataFile(args);
 
-			// get all the symptom in the input file
-			ReaderFileFactory getData = new ReaderFileFactory() {
-			};
-
-			ReaderFile readerFile = null;
-			readerFile = getData.getReadFile(dataFile.inputFilePath);
-
+			// get all symptoms in the input file
+			FileFactory myFileFactory = new FileFactory();
+			ISymptomGenericReader readerFile = myFileFactory.getReadFile("read",dataFile.inputFilePath);
+			
 			// prepare the sort symptom list
 
 			SortCountData countData = new SortCountData(readerFile.getSymptoms());

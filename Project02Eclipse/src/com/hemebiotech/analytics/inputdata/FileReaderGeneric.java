@@ -6,10 +6,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hemebiotech.analytics.Exceptions.PersonalExceptions;
+import com.hemebiotech.analytics.exceptions.PersonalExceptions;
 
-public class ReadPhysicalFile {
+/**
+ * Mother abstract class
+ * 
+ * @author S058601
+ *
+ */
+public abstract class FileReaderGeneric implements ISymptomGenericReader {
 
+	protected String filepath; // containt the filepath for childclass
+	
+	//TODO E2lre
+	/**
+	 * 
+	 * @param filepath
+	 * @return
+	 */
 	public List<String> getLines(String filepath) {
 
 		ArrayList<String> result = new ArrayList<String>();
@@ -39,5 +53,4 @@ public class ReadPhysicalFile {
 		}
 		return result;
 	}
-
 }

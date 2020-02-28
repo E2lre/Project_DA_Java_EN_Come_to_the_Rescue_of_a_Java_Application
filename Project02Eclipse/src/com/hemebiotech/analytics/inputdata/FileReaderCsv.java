@@ -9,13 +9,13 @@ import java.util.List;
  * @author S058601
  *
  */
-public class ReaderFileCsv extends ReaderFile {
+public class FileReaderCsv extends FileReaderGeneric {
 
 	/**
 	 * ReaderFileCsv(filepath) in the constructor of ReaderFileCsv class
 	 * @param filepath  is the .csv filepath
 	 */
-	public ReaderFileCsv(String filepath) {
+	public FileReaderCsv(String filepath) {
 		
 		super.filepath = filepath;
 	}
@@ -27,9 +27,7 @@ public class ReaderFileCsv extends ReaderFile {
 
 		ArrayList<String> result = new ArrayList<String>();
 
-		ReadPhysicalFile myFile = new ReadPhysicalFile();
-
-		List<String> line = myFile.getLines(this.filepath); // all the symptom are not in line
+		List<String> line = this.getLines(this.filepath); // all the symptom are not in line
 
 		String csvSeparator = ";"; 
 

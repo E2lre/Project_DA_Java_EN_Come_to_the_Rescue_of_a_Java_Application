@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics.Exceptions;
+package com.hemebiotech.analytics.exceptions;
 
 
 public class PersonalExceptions extends Exception {

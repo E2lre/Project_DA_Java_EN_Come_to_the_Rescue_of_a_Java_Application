@@ -8,12 +8,12 @@ import java.util.List;
  * @author S058601
  *
  */
-public class ReaderFileTxt extends ReaderFile {
+public class FileReaderTxt extends FileReaderGeneric {
 	/**
 	 * ReaderFileTxt(filepath) in the constructor of ReaderFileTxt class
 	 * @param filepath is the .txt filepath
 	 */
-	public ReaderFileTxt(String filepath) {
+	public FileReaderTxt(String filepath) {
 		super.filepath = filepath;
 	}
 
@@ -22,9 +22,7 @@ public class ReaderFileTxt extends ReaderFile {
 		System.out.println("Read .txt format");
 		ArrayList<String> result = new ArrayList<String>();
 
-		ReadPhysicalFile myFile = new ReadPhysicalFile(); 
-
-		result.addAll(myFile.getLines(this.filepath));// all the symptom are already in line
+		result.addAll(this.getLines(this.filepath));// all the symptom are already in line
 
 		return result;
 	}

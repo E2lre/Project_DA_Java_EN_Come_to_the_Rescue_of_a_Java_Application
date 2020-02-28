@@ -2,7 +2,7 @@ package com.hemebiotech.analytics.inputdata;
 
 import java.util.List;
 /**
- * Generic interface for symptom reader. All reader class implement this intergface
+ * Generic interface for symptom reader. All reader class implement this interface
  * @author S058601
  *
  */
@@ -14,4 +14,5 @@ public interface ISymptomGenericReader {
 
 	List<String> getSymptoms ();
 
+	
 }
