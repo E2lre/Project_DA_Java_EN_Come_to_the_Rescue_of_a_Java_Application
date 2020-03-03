@@ -14,5 +14,5 @@ public interface ISymptomGenericWriter {
 	 * @param myMap list of symptom with count
 	 * @return true if write is ok, false if errors
 	 */
-	boolean setSymptoms (Map<String,Integer> myMap); 
+	boolean reportSymptoms (Map<String,Integer> myMap); 
 }

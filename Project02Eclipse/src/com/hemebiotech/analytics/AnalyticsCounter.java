@@ -50,23 +50,23 @@ public class AnalyticsCounter {
 
 			// get all symptoms in the input file
 			FileFactory myFileFactory = new FileFactory();
-			ISymptomGenericReader readerFile = myFileFactory.getReader(dataFile.inputFilePath);
+			ISymptomGenericReader readerFile = myFileFactory.getReader(dataFile.getInputFilePath());
 			
 			// prepare the sort symptom list
 			SortCountData countData = new SortCountData(readerFile.getSymptoms());
 
 			// initialize output file
-			ISymptomGenericWriter fileWriter = myFileFactory.getWriter(dataFile.outputFilePath);
+			ISymptomGenericWriter fileWriter = myFileFactory.getWriter(dataFile.getOutputFilePath());
 			
 			// count, sort symptom and write in the output file
-			result = fileWriter.setSymptoms(countData.sortSymptoms());
+			result = fileWriter.reportSymptoms(countData.sortSymptoms());
 
 			
 			// End message
 			if (result) {
-				System.out.println("Correct treatment for file " + dataFile.inputFilePath);
+				System.out.println("Correct treatment for file " + dataFile.getInputFilePath());
 			} else {
-				System.out.println("Error of treatment for File " + dataFile.inputFilePath + " treated with errors");
+				System.out.println("Error of treatment for File " + dataFile.getInputFilePath() + " treated with errors");
 			}
 
 		}

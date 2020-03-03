@@ -22,20 +22,26 @@ public abstract class FileWriterGeneric implements ISymptomGenericWriter{
 	 * @return boolean value. true if the output file is corrected generated, false if error
 	 */
 
-	public boolean writeSymptoms(Map<String,Integer> myMap) {
-	try {
+	public boolean writeSymptoms(Map<String,Integer> myMap)  {
+		FileWriter writer = null;
+		try {
 			if (!myMap.isEmpty())
 			{	
-				FileWriter writer = new FileWriter(filepath);
-				Set<Entry<String, Integer>> entires = myMap.entrySet();  //mapTree.get(index) is not running. a Set class is used
-				
-				for(Entry<String,Integer> ent:entires){
-		            writer.write (ent.getKey() +"="+ ent.getValue() + "\n");
-		        }
-	
-				writer.close();
-				System.out.println(myMap.size() + " lines wrote in the output file " + this.filepath);
-				return true;
+				try {
+					writer = new FileWriter(filepath);
+					Set<Entry<String, Integer>> entires = myMap.entrySet();  //mapTree.get(index) is not running. a Set class is used
+					
+					for(Entry<String,Integer> ent:entires){
+			            writer.write (ent.getKey() +"="+ ent.getValue() + "\n");
+			        }
+		
+					//writer.close();
+					System.out.println(myMap.size() + " lines wrote in the output file " + this.filepath);
+					return true;
+				}
+				finally {
+					writer.close();
+				}
 			}
 			else {
 				System.out.println("No datas to write on ouput file " + this.filepath);
@@ -46,6 +52,7 @@ public abstract class FileWriterGeneric implements ISymptomGenericWriter{
 		e.printStackTrace();
 		return false;
 		}
+
 	}
 	
 }

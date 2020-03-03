@@ -24,32 +24,45 @@ public abstract class FileReaderGeneric implements ISymptomGenericReader {
 	 * @return List of symptoms
 	 */
 	public List<String> getLines(String filepath) {
-
+		BufferedReader reader = null;
 		ArrayList<String> result = new ArrayList<String>();
-		if (filepath != null) {
-			try {
-				BufferedReader reader = new BufferedReader(new FileReader(filepath));
-				String line = reader.readLine();
-
-				while (line != null) {
-					result.add(line);
-					line = reader.readLine();
+		try {
+			if (filepath != null) {
+				try {
+					reader = new BufferedReader(new FileReader(filepath));
+					String line = reader.readLine();
+	
+					while (line != null) {
+						result.add(line);
+						line = reader.readLine();
+					}
+					reader.close();
+	
+					if (result.isEmpty()) { // check if symptom list is empty
+						throw new PersonalExceptions("Symptom List is empty");
+					}
+	
+					System.out.println(result.size() + " lines read in input file " + filepath);
+	
+				} 
+				catch (IOException e) {
+					e.printStackTrace();
+					return result;
+				} 
+				catch (PersonalExceptions e) {// treat symptom list is empty
+					e.printStackTrace();
+					return result;
 				}
-				reader.close();
-
-				if (result.isEmpty()) { // check if symptom list is empty
-					throw new PersonalExceptions("Symptom List is empty");
+				finally {
+					reader.close();
 				}
-
-				System.out.println(result.size() + " lines read in input file " + filepath);
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (PersonalExceptions e) {// treat symptom list is empty
-				e.printStackTrace();
-				// System.out.println("Personnal Error : " + e.getMessage());
 			}
+			return result;
 		}
-		return result;
+		catch (Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+
 	}
 }
