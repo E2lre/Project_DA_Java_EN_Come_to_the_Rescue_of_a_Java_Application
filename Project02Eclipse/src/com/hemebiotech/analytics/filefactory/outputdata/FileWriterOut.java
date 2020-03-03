@@ -1,7 +1,9 @@
 package com.hemebiotech.analytics.filefactory.outputdata;
 
 
+
 import java.util.Map;
+
 
 
 public class FileWriterOut extends FileWriterGeneric {
@@ -14,7 +16,7 @@ public class FileWriterOut extends FileWriterGeneric {
 	}
 	
 	@Override
-	public  boolean setSymptoms(Map<String,Integer> myMap) {
+	public  boolean reportSymptoms(Map<String,Integer> myMap) {
 		System.out.println("Write .out format");
 		return this.writeSymptoms(myMap);
 	}

@@ -6,8 +6,8 @@ package com.hemebiotech.analytics.filefactory;
  */
 public class DataFile{
 
-	public String inputFilePath;
-	public String outputFilePath;
+	private String inputFilePath;
+	private String outputFilePath;
 	
 	
 	/**
@@ -41,4 +41,37 @@ public class DataFile{
 		inputFilePath = workDirectory+inputFile;
 		outputFilePath = workDirectory+outputFile;
 	}
+	
+	/**
+	 * Get the filepath mane of the input file
+	 * @return inputFilePath is the filepath mane of the input file
+	 */
+	public String getInputFilePath () {
+		return inputFilePath;
+	}
+	
+	/**
+	 * Set the filepath mane of the input file
+	 * @param inputFilePath is the filepath mane of the input file
+	 */
+	public void setInputFilePath(String inputFilePath) {
+		this.inputFilePath = inputFilePath;
+	}
+
+	/**
+	 * Get the filepath mane of the output file
+	 * @return outputFilePath is the filepath mane of the output file
+	 */
+	public String getOutputFilePath () {
+		return outputFilePath;
+	}
+	
+	/**
+	 * Set the filepath mane of the output file
+	 * @param outputFilePath is the filepath mane of the output file
+	 */
+	public void setOutputFilePath(String outputFilePath) {
+		this.outputFilePath = outputFilePath;
+	}
+
 }

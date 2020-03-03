@@ -16,7 +16,7 @@ public class FileWriterConsole extends FileWriterGeneric {
 	}
 
 	@Override
-	public  boolean setSymptoms(Map<String,Integer> myMap) {
+	public  boolean reportSymptoms(Map<String,Integer> myMap) {
 			
 		System.out.println("Symptom Report write in the console");
 		if (!myMap.isEmpty())
